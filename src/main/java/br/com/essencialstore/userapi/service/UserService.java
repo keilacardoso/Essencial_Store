@@ -1,6 +1,6 @@
 package br.com.essencialstore.userapi.service;
 
-import br.com.essencialstore.userapi.dtos.UserDto;
+import br.com.essencialstore.userapi.dtos.UserDTO;
 import br.com.essencialstore.userapi.model.User;
 import br.com.essencialstore.userapi.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,38 +15,38 @@ public class UserService {
     @Autowired
     private UserRepository userRepository;
 
-    public List<UserDto> getAll(){
+    public List<UserDTO> getAll(){
         List<User> users = userRepository.findAll();
-        return users.stream().map(UserDto::convert).collect(Collectors.toList());
+        return users.stream().map(UserDTO::convert).collect(Collectors.toList());
     }
 
-    public UserDto findById(long userId){
+    public UserDTO findById(long userId){
         Optional<User> user = userRepository.findById(userId);
         if(user.isPresent()){
-            return UserDto.convert(user.get());
+            return UserDTO.convert(user.get());
         }
         return null;
     }
-    public UserDto save(UserDto userDto){
+    public UserDTO save(UserDTO userDto){
         User user = userRepository.save(User.convert(userDto));
-        return UserDto.convert(user);
+        return UserDTO.convert(user);
     }
-    public UserDto delete(long userId){
+    public UserDTO delete(long userId){
         Optional<User> user = userRepository.findById((userId));
         if(user.isPresent()){
             userRepository.delete(user.get());
         }
         return null;
     }
-    public UserDto findByCpf(String cpf){
+    public UserDTO findByCpf(String cpf){
         User user = userRepository.findByCpf(cpf);
         if(user != null){
-            return UserDto.convert(user);
+            return UserDTO.convert(user);
         }
         return null;
     }
-    public List<UserDto> queryByName(String name){
+    public List<UserDTO> queryByName(String name){
         List<User> users = userRepository.queryByNameLike(name);
-        return users.stream().map(UserDto::convert).collect(Collectors.toList());
+        return users.stream().map(UserDTO::convert).collect(Collectors.toList());
     }
 }

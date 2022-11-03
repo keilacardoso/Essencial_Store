@@ -1,6 +1,6 @@
 package br.com.essencialstore.userapi.model;
 
-import br.com.essencialstore.userapi.dtos.UserDto;
+import br.com.essencialstore.userapi.dtos.UserDTO;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -77,7 +77,7 @@ public class User {
         this.registrationDate = registrationDate;
     }
 
-    public static User convert(UserDto userDto) {
+    public static User convert(UserDTO userDto) {
         User user = new User();
         user.setName(userDto.getName());
         user.setCpf(userDto.getCpf());

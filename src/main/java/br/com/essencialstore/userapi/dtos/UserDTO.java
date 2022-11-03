@@ -4,7 +4,7 @@ import br.com.essencialstore.userapi.model.User;
 
 import java.util.Date;
 
-public class UserDto {
+public class UserDTO {
 
     private String name;
     private String cpf;
@@ -61,8 +61,8 @@ public class UserDto {
         this.registrationDate = registrationDate;
     }
 
-    public static UserDto convert(User user){
-        UserDto userDto = new UserDto();
+    public static UserDTO convert(User user){
+        UserDTO userDto = new UserDTO();
         userDto.setName(user.getName());
         userDto.setCpf(user.getCpf());
         userDto.setAddress(user.getAddress());
